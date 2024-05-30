@@ -1,0 +1,37 @@
+[
+{
+  "directory": "/home/csmajs/jherr116/lab-1-setting-up-your-environment-jherr116-blim038/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/shape_area_calculator.dir/src/shape_main.cpp.o -c /home/csmajs/jherr116/lab-1-setting-up-your-environment-jherr116-blim038/src/shape_main.cpp",
+  "file": "/home/csmajs/jherr116/lab-1-setting-up-your-environment-jherr116-blim038/src/shape_main.cpp"
+},
+{
+  "directory": "/home/csmajs/jherr116/lab-1-setting-up-your-environment-jherr116-blim038/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/shape_area_calculator.dir/src/rectangle.cpp.o -c /home/csmajs/jherr116/lab-1-setting-up-your-environment-jherr116-blim038/src/rectangle.cpp",
+  "file": "/home/csmajs/jherr116/lab-1-setting-up-your-environment-jherr116-blim038/src/rectangle.cpp"
+},
+{
+  "directory": "/home/csmajs/jherr116/lab-1-setting-up-your-environment-jherr116-blim038/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/shape_area_calculator.dir/src/triangle.cpp.o -c /home/csmajs/jherr116/lab-1-setting-up-your-environment-jherr116-blim038/src/triangle.cpp",
+  "file": "/home/csmajs/jherr116/lab-1-setting-up-your-environment-jherr116-blim038/src/triangle.cpp"
+},
+{
+  "directory": "/home/csmajs/jherr116/lab-1-setting-up-your-environment-jherr116-blim038/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/area_calculator.dir/src/main1.cpp.o -c /home/csmajs/jherr116/lab-1-setting-up-your-environment-jherr116-blim038/src/main1.cpp",
+  "file": "/home/csmajs/jherr116/lab-1-setting-up-your-environment-jherr116-blim038/src/main1.cpp"
+},
+{
+  "directory": "/home/csmajs/jherr116/lab-1-setting-up-your-environment-jherr116-blim038/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/area_calculator.dir/src/rectangle.cpp.o -c /home/csmajs/jherr116/lab-1-setting-up-your-environment-jherr116-blim038/src/rectangle.cpp",
+  "file": "/home/csmajs/jherr116/lab-1-setting-up-your-environment-jherr116-blim038/src/rectangle.cpp"
+},
+{
+  "directory": "/home/csmajs/jherr116/lab-1-setting-up-your-environment-jherr116-blim038/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/bigger_area_calculator.dir/src/new_main.cpp.o -c /home/csmajs/jherr116/lab-1-setting-up-your-environment-jherr116-blim038/src/new_main.cpp",
+  "file": "/home/csmajs/jherr116/lab-1-setting-up-your-environment-jherr116-blim038/src/new_main.cpp"
+},
+{
+  "directory": "/home/csmajs/jherr116/lab-1-setting-up-your-environment-jherr116-blim038/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/bigger_area_calculator.dir/src/rectangle.cpp.o -c /home/csmajs/jherr116/lab-1-setting-up-your-environment-jherr116-blim038/src/rectangle.cpp",
+  "file": "/home/csmajs/jherr116/lab-1-setting-up-your-environment-jherr116-blim038/src/rectangle.cpp"
+}
+]
