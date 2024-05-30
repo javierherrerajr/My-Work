@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<style> 
+    .UCRimg { 
+        position: absolute; 
+        object-fit: cover;
+        top: 8%;
+        left: 0.5 px;
+    }
+
+    .header { 
+        position: absolute; 
+        font-family: 'Roboto', sans-serif;
+        font-size: 500%;
+        color: white; 
+        top: 20%;
+        left: 33%;
+    }
+
+    .headertxt { 
+        position: absolute; 
+        font-family: 'Lato', sans-serif;
+        font-size: 150%; 
+        font-weight:500;
+        text-align: center;
+        color: white; 
+        top: 15%; 
+        margin: 20%; 
+
+    }
+
+    .image-button { 
+        position: absolute;
+        left: 2%; 
+    }
+
+    .button { 
+        position: absolute;
+        top: 90%;
+        left: 18%;
+    }
+
+    .button2 { 
+        position: absolute;
+        top: 90%; 
+        right: 18%;
+    }
+
+    .txt { 
+        position: absolute;
+        color: white; 
+        top: 88%; 
+        left: 28%;
+        font-size: 250%;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+    }
+
+    .txt2 { 
+        position: absolute;
+        color: white; 
+        top: 85%; 
+        right: 24%;
+        text-align: center; 
+        font-size: 250%;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+    }
+
+    .pages { 
+        position: absolute; 
+        top: 145%; 
+        width: 35%;
+    }
+
+    .txt3 { 
+        position: absolute;
+        font-family:'Lato', sans-serif;
+        font-weight: 700; 
+        font-size: 400%;
+        top: 80%;
+        margin: 20%; 
+    }
+
+    .desc { 
+        position: absolute; 
+        font-family: 'Lato', sans-serif;
+        font-weight: 700; 
+        font-size: 270%;
+        color: white; 
+    }
+
+</style>
+
+<body>
+    <img class = "UCRimg" src = "images/ucr backdrop.jpg" width = 100%, height = 550>
+
+    <p>
+        <a href = "mainPage.html"> <!-- include html page not url in order to link to seperate pages -->
+        <img class = "image-button" src = "images/homeIcon.png" width = 3%, height = 5%>
+        </a>
+    </p>
+
+    <h1 class = "header"> Welcome to UCR <br> Housing Reviews </h1>
+
+    <p class = "headertxt"> Through this website discover which living arrangement suits you best! There are many options at UCR ranging from traditional dorms to suites, all of which have their own unique ammenities and stories. </p>
+ 
+    <!-- left button -->
+    <p>
+        <a href = "dormPage.html"> 
+        <img class= "button" src = "images/button.png"> 
+        </a>
+    </p>
+    
+    <!-- right button -->
+    <p>
+        <a href = "aptPage.html"> 
+        <img class = "button2" src = "images/button.png"> 
+        </a>
+    </p>
+
+    <p class = "txt"> Dorms </p>
+    <p class = "txt2"> Campus <br> apartments </p>
+
+
+    <p class = "txt3"> Take a look at dorm reviews! </p>
+
+    <a href = "Lothian.html">
+        <img class = "pages" style = "left: 10%" src = "lothian/riverside loft 2.png">
+        <p class = "desc" style = "top: 170%; left: 12%;"> Lothian </p>
+    </a>
+
+    <a href = "ai.html">
+        <img class = "pages" style = "right: 10%;" src = "ai/riverside loft 1.png">
+        <p class = "desc" style = "top: 170%; right: 17%;"> Abeerdeen Iverness </p>
+    </a>
+
+    <a href = "dundee.html"> 
+        <img class = "pages" style = "left: 10%; top: 200%;" src = "dundee/riverside loft 4.png">
+        <p class = "desc" style = "top: 225%; left: 12%;"> Dundee </p>
+    </a>
+
+    <a href = "pentland.html">
+        <img class = "pages" style = "right: 10%; top: 200%;" src = "pentland/riverside loft 3.png">
+        <p class = "desc" style = "top: 225%; right: 31%;"> Pentland </p>
+    </a>
+
+    <p class = "txt3" style = "top: 250%; margin: 6%;"> Take a look at campus apartment reviews! </p>
+
+    <a href = "nd.html"> 
+        <img class = "pages" style = "left: 10%; top: 285%;" src = "nd/nd.png">
+        <p class = "desc" style = "top: 310%; left: 12%;"> North District </p>
+    </a>
+
+    <a href = "stonehaven.html"> 
+        <img class = "pages" style = "right: 10%; top: 285%;" src = "stonehaven/stonehaven.png">
+        <p class = "desc" style = "top: 310%; right: 27%;"> StoneHaven </p>
+    </a>
+
+    <a href = "plaza.html"> 
+        <img class = "pages" style = "left: 10%; top: 340%;" src = "plaza/The plaza.png">
+        <p class = "desc" style = "top: 367%; left: 12%;"> The Plaza </p>
+    </a>
+
+    <a href = "falkirk.html"> 
+        <img class = "pages" style = "right: 10%; top: 340%;" src = "falkirk/Falkirk.png">
+        <p class = "desc" style = "top: 367%; right: 33%;"> Falkirk </p>
+    </a>
+
+    <a href = "bannockburn.html"> 
+        <img class = "pages" style = "left: 10%; top: 395%;" src = "bannockburn/Bannockburn Village.png">
+        <p class = "desc" style = "top: 422%; left: 12%;"> Bannockburn</p>
+    </a>
+
+    <a href = "glenmor.html"> 
+        <img class = "pages" style = "right: 10%; top: 395%;" src = "glenmor/Glen mor.png">
+        <p class = "desc" style = "top: 422%; right: 32%;"> Glenmor </p>
+    </a>
+</body>
+
+
+</html>

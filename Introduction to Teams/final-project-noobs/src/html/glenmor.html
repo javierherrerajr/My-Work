@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- star rating code -->
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    .UCRimg { 
+        position: absolute; 
+        object-fit: cover;
+        top: 8%;
+        left: 0.5 px;
+    }
+    
+    .headertxt { 
+        width: 30%;
+        height:none; 
+        position: absolute; 
+        top: 37%;
+        left: 39%
+    }
+
+    .image-button { 
+        position: absolute;
+        left: 2%; 
+    }
+
+    .blue { 
+        position: absolute; 
+        top: 149%;
+        left: 3%; 
+        overflow: scroll;
+
+    }
+
+    .input{ 
+        position: absolute; 
+        top: 153%;
+        left: 3%;
+        width: 28%; 
+        height: 97%; 
+        overflow: scroll;
+    }
+
+    
+    .input2{ 
+        position: absolute; 
+        top: 210%;
+        left: 3.8%;
+        width: 26%; 
+        height: 30%; 
+        overflow: hidden;
+        resize: none;
+
+    }
+
+    input[type = 'text'] { 
+        color:black;
+        font-family:'Roboto', sans-serif;
+        font-weight: 300;
+        font-size: 20px; 
+        position: absolute; 
+    }
+
+    .review { 
+        color: white; 
+        font-family: 'Lato', sans-serif;
+        position:absolute; 
+        top: 149%;
+        left: 10%; 
+        font-size: 170%;
+    }
+
+    .leftHeader { 
+        color: rgb(58, 57, 57);
+        font-family: 'Lato', sans-serif;
+        font-weight:400;
+        font-size: 200%;
+        position: absolute; 
+        top: 95%; 
+        left: 3%;
+    }
+
+    .reviewtext { 
+        font-family: 'Lato', sans-serif;
+        text-align: left; 
+        position: absolute; 
+        top: 80%; 
+        font-size: 120%;   
+        left: 40%; 
+    }
+
+    .reviewBox { 
+        font-family: 'Lato', sans-serif;
+        position: absolute; 
+        left: 43%; 
+        top: 92%; 
+    }
+
+    .star { 
+        position: absolute; 
+        width: 60px; 
+        height: 60px; 
+        top: 103%;
+        left: 3%; 
+    }
+
+    .numRating { 
+        position: absolute; 
+        font-family: 'Lato', sans-serif; 
+        font-size: 525%;
+        font-weight: 700;
+        top: 100%;
+        left: 9%;
+
+    }
+
+    .survey { 
+        position: absolute; 
+        top: 179%; 
+        left: 4%; 
+        text-align: left; 
+        font-family: 'Lato', sans-serif;
+        font-size: 150%;
+    }
+
+    .submit { 
+        background-color: #428eff;
+        border: none;
+        position: absolute; 
+        top: 242%; 
+        left: 23.3%;
+        font-family: 'Lato', sans-serif;
+        font-size: 20px;
+        color: white;
+        display: inline-block;
+        cursor: pointer;
+        width: 100px; 
+        height: 40px;
+    }
+
+    .star-container {
+        text-align: center;
+        font-size: 45px;
+        margin-top: 50px;
+        position: absolute; 
+        left: 12%;
+    }
+
+    .fill {
+        color: #ffc700;
+    }
+
+    .empty { 
+        color: grey;
+    }
+
+    /* css for the star rating */
+   
+    .rate {  /* change this to change the position of the stars */
+        float: left;
+        position: absolute; 
+        left: 13%;
+        padding: 0 10px;
+    }
+
+    .rate:not(:checked) > input {
+        position:absolute;
+        top:-9999px;
+    }
+    
+    .rate:not(:checked) > label {
+        float:right;
+        width:1em;
+        overflow:hidden;
+        white-space:nowrap;
+        cursor:pointer;
+        font-size: 50px; /* size of the stars*/
+        color:#ccc;
+    }
+    
+    .rate:not(:checked) > label:before {
+        content: '★ ';
+    }
+    
+    .rate > input:checked ~ label {
+        color: #ffc700;    
+    }
+    
+    .rate:not(:checked) > label:hover,
+    .rate:not(:checked) > label:hover ~ label {
+        color: #deb217;  
+    }
+    
+    .rate > input:checked + label:hover,
+    .rate > input:checked + label:hover ~ label,
+    .rate > input:checked ~ label:hover,
+    .rate > input:checked ~ label:hover ~ label,
+    .rate > label:hover ~ input:checked ~ label {
+        color: #c59b08;
+    }
+
+
+</style>
+
+
+<body>
+    <!-- dont change -->
+    <img class = "UCRimg" src = "glenmor/glenmorheader.png" width = 100%, height = 550> 
+    <p style = "font-family: 'Roboto', sans-serif; font-weight: 500; position: absolute; top: 20%; left: 37%; font-size: 700%; color: white;"> Glenmor </p>
+    <p>
+        <a href = "index.html"> <!-- include html page not url in order to link to seperate pages -->
+        <img class = "image-button" src = "images/homeIcon.png" width = 3%, height = 5%>
+        </a>
+    </p>
+
+    <img class = "blue" src = "images/button.png" width = 413, height = 35> 
+    <img class = "input" src = "images/Rectangle 2.png">
+
+
+    <!--overall review rating should be displayed here under the review box class -->
+    <img class = "reviewBox" style = "width: 75px; height: 75px" src = "images/overall.png">
+    <p style = "position:absolute; left: 43%; font-family: 'Lato', sans-serif; top: 92%; font-size: 21px;color: white; font-weight: 400;"> Overall:</p>
+    <p style = "position: absolute; left: 43.5%; top: 95%; font-family: 'Lato', sans-serif; font-size: 42px;color: white; font-weight: 700;"> 4.5 </p>
+
+    <!--all reviews should fall under the review text class-->
+    <div class = "reviewtext">
+        <p style = "position: absolute; font-weight: 700; top: 20%; right: 65%;"> Dorm type: Double </p>
+        <p style = "margin:15%;"> Hello this is a review #1! this is a dummy review used to test how the review system should look. If a review is very long it 
+            should be able to strech across the page, with a margin on both the right and left side of the page. It should not touch the sides 
+            of the pages in order to keep the page organized. There should be a set margin. 
+        </p>
+        <p style = "position: absolute; right: 73%; top: 68%;"> Cleanliness </p>
+        <p style = "position: absolute; right: 75%; top: 78%;"> Social Life </p>
+        <p style = "position: absolute; right: 78%; top: 87%;"> Quality </p>
+        <p class = "review"> Write a review!</p>
+        <div class="star-container" style="top:54%; right: 33%; font-size: 38px;">
+            <span class="fill">&#9733;</span>
+            <span class="fill">&#9733;</span>
+            <span class="fill">&#9733;</span>
+            <span class="empty">&#9733;</span>
+            <span class="empty">&#9733;</span>
+        </div>
+    
+        <div class="star-container" style="top:63%; right: 33%; font-size: 38px;">
+            <span class="fill">&#9733;</span>
+            <span class="fill">&#9733;</span>
+            <span class="fill">&#9733;</span>
+            <span class="empty">&#9733;</span>
+            <span class="empty">&#9733;</span>
+        </div>
+    
+        <div class="star-container" style="top:72%; right: 33%; font-size: 38px;">
+            <span class="fill">&#9733;</span>
+            <span class="fill">&#9733;</span>
+            <span class="fill">&#9733;</span>
+            <span class="empty">&#9733;</span>
+            <span class="empty">&#9733;</span>
+        </div>
+
+    </div>
+
+
+    <!-- left side -->
+    <p class = "leftHeader"> Overall rating:</p>
+    <img class = "star" src = "images/star.png">
+    <img style = "position: absolute; top: 100%; left: 3%; width: 300px;" src = "images/border.png">
+
+    <p class = "leftHeader" style= "top: 115%;"> Categories:</p>
+    <img style = "position: absolute; top: 120%; left: 3%; width: 300px;" src = "images/border.png">
+
+    <p style = "font-family: 'Lato', sans-serif; position: absolute; top: 124%; left: 3%; font-size: 150%;"> Cleanliness</p>
+    <p style = "font-family: 'Lato', sans-serif; position: absolute; top: 131%; left: 3%; font-size: 150%;"> Social Life </p>
+    <p style = "font-family: 'Lato', sans-serif; position: absolute; top: 138%; left: 3%; font-size: 150%;"> Quality </p>
+    <p class = "review"> Write a review!</p>
+    <!-- rating should change as reviews come in -->
+    <p class = "numRating"> 4.5 </p>
+
+    <!-- left side stars -->
+    <div class="star-container" style="top:115%">
+        <span class="fill">&#9733;</span>
+        <span class="fill">&#9733;</span>
+        <span class="fill">&#9733;</span>
+        <span class="empty">&#9733;</span>
+        <span class="empty">&#9733;</span>
+    </div>
+
+    <div class="star-container" style="top:122%">
+        <span class="fill">&#9733;</span>
+        <span class="fill">&#9733;</span>
+        <span class="fill">&#9733;</span>
+        <span class="empty">&#9733;</span>
+        <span class="empty">&#9733;</span>
+    </div>
+
+    <div class="star-container" style="top:129%">
+        <span class="fill">&#9733;</span>
+        <span class="fill">&#9733;</span>
+        <span class="fill">&#9733;</span>
+        <span class="empty">&#9733;</span>
+        <span class="empty">&#9733;</span>
+    </div>
+
+    <form action="http://127.0.0.1:5502/final-project-noobs/src/html/glenmor.html" method="GET"> <!-- this line is used to transfer user input to the backend -->
+        <p style = "font-family: 'Lato', sans-serif; position: absolute; top: 156%; left: 4%; font-size: 150%;"> Cleanliness</p>
+        <div class="rate" style = "top: 153%;"> <!-- rating for cleanliness -->
+            <input type="radio" id="star5" name="rate" value="5" />
+            <label for="star5" title="text">5 stars</label>
+            <input type="radio" id="star4" name="rate" value="4" />
+            <label for="star4" title="text">4 stars</label>
+            <input type="radio" id="star3" name="rate" value="3" />
+            <label for="star3" title="text">3 stars</label>
+            <input type="radio" id="star2" name="rate" value="2" />
+            <label for="star2" title="text">2 stars</label>
+            <input type="radio" id="star1" name="rate" value="1" />
+            <label for="star1" title="text">1 star</label>
+          </div>
+          
+          <p style = "font-family: 'Lato', sans-serif; position: absolute; top: 164%; left: 4%; font-size: 150%;"> Social Life </p>
+          <div class="rate" style = "top: 161%;"> <!-- rating for social life -->
+            <input type="radio" id="s.5" name="social" value="5" />
+            <label for="s.5" title="text">5 stars</label>
+            <input type="radio" id="s.4" name="social" value="4" />
+            <label for="s.4" title="text">4 stars</label>
+            <input type="radio" id="s.3" name="social" value="3" />
+            <label for="s.3" title="text">3 stars</label>
+            <input type="radio" id="s.2" name="social" value="2" />
+            <label for="s.2" title="text">2 stars</label>
+            <input type="radio" id="s.1" name="social" value="1" />
+            <label for="s.1" title="text">1 star</label>
+          </div>
+    
+          <p style = "font-family: 'Lato', sans-serif; position: absolute; top: 172%; left: 4%; font-size: 150%;"> Quality </p>
+          <div class="rate" style = "top: 169%"> <!-- rating for quality-->
+            <input type="radio" id="str.5" name="quality" value="5" />
+            <label for="str.5" title="text">5 stars</label>
+            <input type="radio" id="str.4" name="quality" value="4" />
+            <label for="str.4" title="text">4 stars</label>
+            <input type="radio" id="str.3" name="quality" value="3" />
+            <label for="str.3" title="text">3 stars</label>
+            <input type="radio" id="str.2" name="quality" value="2" />
+            <label for="str.2" title="text">2 stars</label>
+            <input type="radio" id="str.1" name="quality" value="1" />
+            <label for="str.1" title="text">1 star</label>
+          </div>
+ 
+        <div class = "survey">
+            <p> Select your apartment type: </p>
+            <input type="radio" id="type1" name="val" value="1 bed 1 bath">
+            <label for="type1"> 1 bed & 1 bath </label><br>
+            <input type="radio" id="type2" name="val" value="2 bed 1 bath">
+            <label for="type2">2 bed & 1 bath </label><br>  
+            <input type="radio" id="type3" name="val" value="2 bed 2 bath">
+            <label for="type3">2 bed & 2 bath</label><br>
+            <input type = "radio" id = "type4" name = "val" value ="4 bed 2 bath">
+            <label for="type4">4 bed & 2 bath</label>
+        </div>
+    
+        <input class = "submit" type="submit" value="Submit">
+    
+        <textarea class = "input2" type ="text" > Share details of your experience here! </textarea>
+        </form>
+</body>
+</html>
