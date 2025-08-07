@@ -1,0 +1,73 @@
+# Smart Security System - .gitignore
+
+# Generated/Runtime Files
+detection_logs.json              # Local detection logs
+
+# Face Training Data (Optional - see note below)
+authorized_faces/              # Contains personal face data
+
+# Python Cache
+__pycache__/                   # Python bytecode cache
+*.pyc                          # Compiled Python files
+*.pyo                          # Optimized Python files
+*.pyd                          # Python extension modules
+.Python                       # Python interpreter
+
+# IDE/Editor Files
+.vscode/                       # VS Code settings
+.idea/                         # PyCharm/IntelliJ settings
+*.swp                          # Vim swap files
+*.swo                          # Vim swap files
+*~                             # Backup files
+.DS_Store                      # macOS system files
+
+# Logs and Temporary Files
+*.log                          # Log files
+*.tmp                          # Temporary files
+*.temp                         # Temporary files
+logs/                          # Log directories
+
+# Configuration Files with Sensitive Data
+config.json                    # If you add config files later
+secrets.json                   # Any secret configuration
+.env                           # Environment variables
+
+# System Files
+Thumbs.db                      # Windows thumbnail cache
+.DS_Store                      # macOS folder attributes
+desktop.ini                    # Windows folder settings
+
+# Documentation Build
+docs/_build/                   # Sphinx documentation builds
+
+# Distribution/Packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing
+.coverage                      # Coverage reports
+htmlcov/                      # Coverage HTML reports
+.pytest_cache/                # Pytest cache
+
+# Jupyter Notebooks (if you add any)
+.ipynb_checkpoints/
+
+# Note about authorized_faces/:
+# This folder contains personal face training data.
+# - INCLUDE if you want to share example faces for testing
+# - EXCLUDE (keep uncommented) for privacy/security reasons
+# - Users will create their own training data anyway

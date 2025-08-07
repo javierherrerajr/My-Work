@@ -1,0 +1,102 @@
+# Jetson Nano Security System - .gitignore
+
+# Virtual Environments
+jetson_security_env/           # Python virtual environment
+venv/                          # Alternative venv name
+env/                           # Alternative env name
+
+# Python Cache
+__pycache__/                   # Python bytecode cache
+*.pyc                          # Compiled Python files
+*.pyo                          # Optimized Python files
+*.pyd                          # Python extension modules
+
+# Model Cache (YOLOv5 downloads models automatically)
+.cache/                        # PyTorch Hub cache
+models/                        # If you manually download models
+weights/                       # Model weight files
+*.pt                          # PyTorch model files
+*.pth                         # PyTorch model files
+
+# Logs and Runtime Files
+*.log                         # Log files
+detection_logs.json           # Local detection logs (if created)
+jetson-security.log          # Service logs
+system.log                   # System logs
+
+# Temporary Files
+*.tmp                        # Temporary files
+*.temp                       # Temporary files
+*~                          # Backup files
+
+# IDE/Editor Files
+.vscode/                     # VS Code settings
+.idea/                       # PyCharm/IntelliJ settings
+*.swp                        # Vim swap files
+*.swo                        # Vim swap files
+
+# System Files
+.DS_Store                    # macOS system files
+Thumbs.db                    # Windows thumbnail cache
+desktop.ini                  # Windows folder settings
+
+# Configuration Files with Sensitive Data
+config.json                  # Configuration files
+secrets.json                 # Secret configuration
+.env                         # Environment variables
+
+# Video/Image Files (if you add video recording)
+recordings/                  # Video recordings
+snapshots/                   # Image snapshots
+*.mp4                        # Video files
+*.avi                        # Video files
+*.mov                        # Video files
+
+# Test Images/Videos
+test_data/                   # Test images or videos
+sample_images/              # Sample detection images
+
+# Systemd Service Files (created during setup)
+jetson-security.service     # Service file (gets copied to /etc/systemd/)
+
+# Swap Files (created during installation)
+/swapfile                   # Swap file for memory
+
+# Downloaded Packages/Wheels
+*.whl                       # Python wheel files
+torch-*.whl                 # PyTorch wheels for Jetson
+
+# Performance Logs
+tegrastats.log              # Tegra stats output
+performance.log             # Performance monitoring
+
+# Jupyter Notebooks (if you add any)
+.ipynb_checkpoints/
+
+# Documentation Build
+docs/_build/                # If you add Sphinx docs
+
+# Distribution/Packaging
+build/
+dist/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing
+.coverage                   # Coverage reports
+.pytest_cache/              # Pytest cache
+
+# Backup Files
+*.bak                       # Backup files
+*.backup                    # Backup files
+
+# SSH Keys (if accidentally placed here)
+*.pem                       # SSH private keys
+*.key                       # SSH private keys
+id_rsa*                     # SSH keys
+
+# Database Files (if you add local storage)
+*.db                        # SQLite databases
+*.sqlite                    # SQLite databases
+*.sqlite3                   # SQLite databases

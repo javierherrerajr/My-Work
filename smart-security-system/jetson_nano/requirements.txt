@@ -1,0 +1,33 @@
+# Jetson Nano Security System Requirements
+# Install with: pip3 install -r requirements.txt
+
+# Core packages
+opencv-python==4.8.0.76
+numpy==1.21.6
+requests==2.31.0
+Pillow==9.5.0
+
+# YOLOv5 and PyTorch (Jetson-optimized versions)
+torch==1.13.0
+torchvision==0.14.0
+ultralytics==8.0.196
+
+# Additional ML packages
+scipy==1.9.3
+matplotlib==3.6.3
+seaborn==0.12.2
+
+# Utilities
+PyYAML==6.0
+tqdm==4.66.1
+psutil==5.9.5
+
+# Email support (lightweight, no Firebase needed)
+# No additional packages needed - uses built-in smtplib
+
+# Note: On Jetson Nano, you may need to install some packages via apt instead:
+# sudo apt-get install python3-opencv python3-numpy python3-scipy
+# For YOLOv5, ensure you have the correct PyTorch version for Jetson Nano
+# For email, use Python's built-in smtplib, no additional package needed
+# For camera support, ensure you have the necessary drivers installed
+# Follow this youtube video if you're confused https://www.youtube.com/watch?v=ZXbOV83EXdQ
