@@ -1,0 +1,51 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2&family=Fredoka&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+/* Tailwind CSS imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+  :root {
+    --background: #FFF5E5;
+    --foreground: #2C1818;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: 'Baloo 2', 'Fredoka', sans-serif;
+    height: 100%;
+    width:100%;
+    margin: 0;
+  }
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+    height:100%;
+  }
+  
+  /* Full width class that breaks out of containers */
+  .full-width {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    height: 1py;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+
+input::placeholder {
+  font-family: 'Baloo 2', sans-serif !important;
+}
+

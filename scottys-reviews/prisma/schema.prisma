@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String   @id @default(cuid()) // Primary key
+  netid             String?   @unique // Unique identifier for the user
+  username          String?   // Display name that user wants to choose to show
+  password          String?  // Optional password
+  resetToken        String?  // Optional reset token for password reset
+  resetTokenExpiry  DateTime? // Optional expiry date for the reset token
+  status            String?   // User status (e.g., active, inactive)
+  expectedGradYear  Int?     // Expected graduation year if applicable
+  major             String?   // User's major
+  aboutMe           String?  // Optional about me section
+  avatar            String?  // Optional avatar URL
+  reviews           Review[] // One-to-many relationship with Review
+}
+
+model Class {
+  courseid   String @id //Primary key - unique identifier for the course: CS180
+  classname  String // Name of the course: Introduction to Computer Science
+  units      Int    // Number of units for the course
+  subject    String? // Subject of the course (e.g., Computer Science, Mathematics)
+  reviews    Review[] // Many-to-many relationship with Review
+}
+
+model Review {
+  reviewid   Int @id @default(autoincrement()) //Unique identifier
+  review     String?
+  ta         String?  
+  rating     Int?
+  quarter    String?  
+  professor  String?
+  netid      String?   
+  userId     String // foreign key to User
+  courseid   String // foreign key to Class
+
+  // These two fields create the foreign key relationships
+  user       User  @relation(fields: [userId], references: [id]) // Relation to User
+  course     Class @relation(fields: [courseid], references: [courseid]) // Relation to Class
+}
