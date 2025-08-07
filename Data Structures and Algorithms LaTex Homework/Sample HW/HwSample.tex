@@ -1,0 +1,150 @@
+% https://www.overleaf.com/learn/latex/Main_Page <-- latex resources
+% <--- percent sign starts a comment line in Latex
+
+%----------------------------------------------------------------------------------
+%
+% This is a sample assignment .tex file. Put your name, assignment number and the 
+% due date below, as shown.
+% If you work with a partner, create another line with command \student{his/her name}
+%
+% Before you typeset your own assignment try to preview and print this one. If you
+% have LaTeX installed on your machine, you need to: 
+%   1. Save this in a file, say hw.tex
+%   2. Run "pdflatex hw" 
+%	3. LaTeX produces a pdf file that you can view with/print any pdf viewer
+%
+% Alternatively you can also compile and preview it in overleaf.com, the online
+% LaTeX editor.
+%
+
+%----------------------------------------------------------------------------------
+
+\documentclass[11pt]{article}
+
+%----------------------------------------------------------------------------------
+% this is a list of latex packages that may be useful in this document
+%----------------------------------------------------------------------------------
+
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{amsfonts,amsmath,latexsym,amssymb,amsthm}
+\usepackage[nothing]{algorithm}
+\usepackage{algorithmicx}
+\usepackage[noend]{algpseudocode}
+
+%----------------------------------------------------------------------------------
+% some macros below. don't worry about these.
+%----------------------------------------------------------------------------------
+
+
+\newcommand{\student}[1]{{\noindent\Large\em {#1} \hfill}\vskip 0.1in}
+
+\newcommand{\assignment}[1]{\centerline{\large\bf CS111 Homework {#1}}}
+
+\newcommand{\duedate}[1]{{\centerline{due {#1}}}}
+
+\newcommand{\assign}{\,\leftarrow\,}
+
+\newcounter{prnum}
+\setcounter{prnum}{0}
+\newenvironment{problem}{{\vskip 0.2in\noindent\bf Problem
+       \addtocounter{prnum}{1} \arabic{prnum}.}}{\vskip 0.1in}
+
+%----------------------------------------------------------------------------------
+% the actual source for the document starts here
+%----------------------------------------------------------------------------------
+
+\begin{document}
+
+\student{Javier Herrera Jr} % <-- Replace with your name 
+\student{Testing} % <-- Cat's name
+\vskip 0.1in\noindent\hrule\vskip 0.2in
+\assignment{1}                           % <-- ASSIGNMENT NUMBER ******
+\duedate{Wednesday, January 20th}              % <-- DUE DATE ***************
+
+%----------------------------------------------------------
+
+\begin{problem}
+\noindent(a) 
+The inner loop of the first \textbf{for} loop prints $i^2$ letters for each $i = 1,2,...,2n+1$. The inner loop of the second \textbf{for} loop prints $2i$ letters for each $i = 1,2,...,n^2$.
+Thus denoting $f(n)$ the number of letters ``A" printed we have:
+\begin{equation*}
+    f(n) = \sum_{i=1}^{2n+1} i^2 + \sum_{i=1}^{n^2}2i.
+\end{equation*}
+%
+\noindent (b)
+Using formulas for the sum of the first $k$ terms of an arithmetic series and the sum of squares of $k$ first integers, we can simplify the above formula as follows:
+% 
+\begin{align*}
+    f(n) &= \sum_{i=1}^{2n+1} i^2 + \sum_{i=1}^{n^2}2i.
+    \\
+    &= \frac16 (2n+1)(2n+2)(4n+3) + 2 \cdot \frac12 n^2(n^2+1)
+    \\
+    &= \frac16 (16n^3+36n^2+26n+6) + (n^4+n^2)
+    \\
+    &= n^4 + \frac83 n^3 + 7n^2+ \frac{13}{3}n + 1
+\end{align*}
+%
+\noindent (c)
+$f(n) = \Omega(n^4)$, since $n^4 + 8/3 \, n^3 + 7n^2+ 13/3 \, n + 1 \geq n^4$ for $n \ge 0$
+
+$f(n) = O(n^4)$, since 
+$n^4 + 8/3 \, n^3 + 7n^2+ 13/3 \, n + 1 \leq 7(n^4 + n^4 +n^4 +n^4 + n^4) = 35 n^4$ for $n \ge 1$\\
+We conclude that $f(n) = \Theta(n^4)$.
+\end{problem}
+
+%----------------------------------------------------------
+\begin{problem}
+    Use induction to prove the formula for the sum of a geometric sequence:
+$$\sum_{i=0}^{n} a_i = \frac{a^{n+1}-1}{a-1}$$
+	\begin{itemize}
+		\item Base case: $n=0$: $\text{LHS} =a^0 = 1$ and $\text{RHS}=\frac{a-1}{a-1} = 1$. So it is true for base case.
+		\item Inductive Step: Assume the identity holds for some for $n=k$ that is:
+		$$\sum_{i=0}^{k} a_i = \frac{a^{k+1}-1}{a-1}$$
+	    Prove that it is true for $n=k+1$:
+		$$\sum_{i=0}^{k+1} a_i = \frac{a^{k+2}-1}{a-1}$$
+		We have:
+		\begin{align*}
+			\text{LHS} &= \sum_{i=0}^{k+1} a_i = \sum_{i=0}^{k} a_i + a^{k+1} \;\;\text{(separate last term from the sum)}
+			\\
+			&= \frac{a^{k+1}-1}{a-1} + a^{k+1} \quad\text{(apply inductive assumption)}
+			\\
+			&= \frac{a^{k+1}-1+ a^{k+1}(a-1)}{a-1} 
+			\\
+			&= \frac{a\cdot a^{k+1}-1}{a-1} = \frac{a^{k+2}-1}{a-1} = \text{RHS}
+		\end{align*}
+		\item Conclusion: The claim holds for $n=k+1$. 
+		From the base case and the inductive step, it holds for $n \ge 0$
+	\end{itemize}
+\end{problem}
+
+%----------------------------------------------------------
+
+\begin{problem}
+    Give asymptotic values for this function using $\Theta$-notation:
+$f(n) = \dfrac{n^2 3^n}{4} + n^4 2^n$
+
+\smallskip
+\begin{itemize}
+	\item $\dfrac14 n^2 3^n + n^4 2^n \ge \dfrac14 n^2 3^n$ for $n\ge 0$, so  $f(n) = \Omega(n^2 3^n)$
+	\item We also have:
+		\begin{flalign*}
+			f(n) &= \frac14 n^2 3^n + n^4 2^n &
+			\\
+			&= O(n^2 3^n) + n^2 \cdot n^2 \cdot 2^n &
+			\\
+			&= O(n^2 3^n) + n^2 \cdot O(1.5^n) \cdot 2^n  \quad (\text{because} \; n^2 = O(1.5^n)) &
+			\\
+			&= O(n^2 3^n) + O(n^2 3^n) = O(n^2 3^n) &
+		\end{flalign*}
+\end{itemize}
+We have shown that $f(n) = \Omega(n^2 3^n)$ and $f(n) = O(n^2 3^n)$. Therefore $f(n) = \Theta(n^2 3^n)$
+\end{problem}
+
+%----------------------------------------------------------
+
+\vskip 0.2in
+\paragraph{Academic integrity declaration.}
+I did the assignment with my cat Tora.
+
+\end{document}

@@ -1,0 +1,171 @@
+\documentclass{article}
+
+\usepackage{fullpage,latexsym,picinpar,amsmath,amsfonts,graphicx}
+
+\input{macros.tex}
+
+\begin{document}
+
+\centerline{\large \bf CS 111 ASSIGNMENT 3 }
+%\centerline{due}
+
+\vskip 0.2in
+
+
+\vskip 0.1in
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+\noindent a) Consider the following linear homogeneous recurrence relation: $R_n = 4R_{n-1} - 3R_{n-2}$. It is known that: $R_0 = 1$, $R_2 = 5$. Find $R_3$.
+
+\vspace{0.1in} - First, we set $n=2$ and get $R_2 = 4R_1 - 3R_0$
+
+\vspace{0.1in} - Then, we substitute the give values of $R_0 = 1, R_2 = 5$ giving the value $R_1 = 2$
+
+\vspace{0.1in} - Now, we set $n=3$ and get $R_3=4R_2-3R_1$
+
+\vspace{0.1in} - Lastly, we compute for $R_3$ and get 14.
+
+\vspace {0.1in}
+\noindent b) Determine the general solution of the recurrence  equation if its characteristic equation has the following roots:  1, -2, -2, 2, 7, 7.
+
+\vspace{0.1in} - With these roots in mind, we know that the characteristic equation of a recurrence relation has the form $(x-r_1)^{m_k}$ = 0. We also know that the general solution form is $R_n=C_1(r_1)^n+...$
+
+\vspace{0.1in} - Then, we see that 1 has a multiplicity $(m)$ of 1, -2 is $m=2$, 2 is $m=1$, and 7 is $m=1$
+
+\vspace{0.1in} - Lastly, we write the general solution which is $R_n=C_1+C_2(-2)^n+C_3n(-2)^n+C_4(2)^n+C_5(7)^n+c_6n(7)^n$
+
+\vspace {0.1in}
+\noindent  c) Determine the general solution of the recurrence  equation $A_n = 256A_{n-4}$.
+
+\vspace{0.1in} - Assuming $A_n=r^n$, that means $r^n=256r^{n-4}$ and we can divide both side by $r^{n-4}$ giving $r^4=256$
+
+\vspace{0.1in} - Then, we solve for $r^4=256$ and since $256=2^8$, that leads for $r= 4,-4,4i,-4i$ which are the characteristic roots.
+
+\vspace{0.1in} - Lastly, we write our general solution that is $A_n=C_1(4)^n+C_2(-4)^n+C_3(4i)^n+C_4(-4i)^n$. If we want to rewrite the complex terms $4i,-4i$, we can us Euler's formula and use $4^n(C_3cos(npi/2)+C_4sin(npi/2))$ for $4i,-4i$ 
+
+\vspace {0.1in}
+\noindent  d) Find the general form of the particular solution of the recurrence $B_n = 3B_{n-2} - 2B_{n-3}$ + 2.
+
+\vspace{0.1in} - First, after finding the corresponding homogeneous recurrence relation of $B_n-3B_{n-2}+2B_{n-3}=0$, we find the characteristic equation when assuming $B_n=r^n$ which leads to it being $r^3-3r^2+0r+2=0$
+
+\vspace{0.1in} - Then, after factoring the characteristic equation, we see the general solution to the equation is $B^h_n=C_1+C_2n+C_3(2)^n$.
+
+\vspace{0.1in} - Next, we need to try a quadratic approach to find the particular solution. We substitute and expand any squared terms to get $An^2+Bn+C=3(A(n^2-4n+4)+B(n-2)+C)-2(A(n^2-6n+9)+B(n-3)+C)+2$
+
+\vspace{0.1in} - After grouping like terms, We solve for the coefficients, leading for $An^2=A-2A+3A=A=0$, $Bn=3B-2B=B=0$, and $C=-6A+C=2$ to have a particular solution of $B^p_n=2$.
+
+\vspace{0.1in} - Thus, the general solution for the particular solution is $B_n=C_1+C_2n+C_3(2)^n+2$.
+
+\end{problem}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Solve the following recurrence equations:
+
+%
+$a)$
+\begin{eqnarray*}
+        f_n &=& f_{n-1} + 4f_{n-2} + 2f_{n-3}\\
+        f_0 &=& 0 \\
+        f_1 &=& 1 \\
+	f_2 &=& 4 
+\end{eqnarray*}
+%
+Show your work (all steps: the characteristic polynomial and its roots, the general solution, 
+using the initial conditions to compute the final solution.)
+
+\vspace{0.1in} - First, the characteristic equation with its roots turned out to be $r^3-r^2-4r-2=0$ with roots of $r=-1,1+sqrt(3),1-sqrt(3)$
+
+\vspace{0.1in} - Then, the general solution turned out to be $f_n=c_1(-1)^n+C_2(1+sqrt(3))^n+C_3(1-sqrt(3))^n$
+
+\vspace{0.1in} - Lastly, after computing for each initial condition, the final solution turned out to be $f_n=(-1)^n+ (3+sqrt(3))/(6) (1+sqrt(3))^n+(3-sqrt(3))/6(1-sqrt(3))^n$
+
+\vskip 0.1in
+
+$b)$
+\begin{eqnarray*}
+        t_n &=& t_{n-1} + 2t_{n-2} + 2^n\\
+        t_0 &=& 0 \\
+        t_1 &=& 2
+\end{eqnarray*}
+%
+Show your work (all steps: the associated homogeneous equation,
+the characteristic polynomial and its
+roots, the general solution of the homogeneous
+equation, computing a particular solution,
+the general solution of the non-homogeneous equation,
+using the initial conditions to compute the final solution.)
+
+\vspace{0.1in} - First, the associated homogeneous equation would be $t_n-t_{n-1}-2t_{n-2}=0$
+
+\vspace{0.1in} - Next, the characteristic polynomial and its roots would be $r^2-r-2=0$ with roots of $r=2,-1$
+
+\vspace{0.1in} - Then, the general solution with these in mind would be $t^h_n=C_12^n+C_2(-1)^n$
+
+\vspace{0.1in} - Next, computing for a particular solution with a modified form approach using $t^p_n=An2^n$ since $2^n$ is already a solution to the homogeneous equation, we get $t^p_n= (2/3)n2^n$
+
+\vspace{0.1in} - After that, the general solution of the non-homogeneous equation would be $t_n=C_12^n+C_2(-1)^n+(2/3)n2^n$
+
+\vspace{0.1in} - Lastly, the final solution using the inital conditions would be $t_n=(2/9)(2^n-(-1)^n)+(2/3)n2^n$
+
+%
+\end{problem}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip 0.1in
+
+\begin{problem}
+We want to tile an $n\times 1$ strip with $1\times 1$ tiles that are green (G), blue (B), and red (R), $2\times 1$ purple (P) and $2\times 1$ orange (O) tiles. Green, blue and purple tiles cannot be next to each other, and there should be no two purple or three blue or green tiles in a row (for ex., GGOBR is allowed, but GGGOBR, GROPP and PBOBR are not). Give a formula for the number of such tilings. Your solution must include a recurrence equation (with initial conditions!), and a full justification. You do not need to solve it. 
+
+\vspace{0.1in} - In order to find a formula for these conditions, we need to identify a variable, $T_n$, as the number of the tiles in the $n\times 1$ strip
+
+\vspace{0.1in} - Next, we need to define base cases for the last tile conditions. These would include a total of 4 cases. 
+
+\vspace{0.1in}\indent\indent - Case 1: If the last tile is Red (R), Contribution $T_{n-1}$
+
+\vspace{0.1in}\indent\indent - Case 2: If the last tile is Green (G) or Blue (B), Contribution $T_{n-2}$
+
+\vspace{0.1in}\indent\indent - Case 3: If the last tile is Purple (P), Contribution $T_{n-2}$
+
+\vspace{0.1in}\indent\indent - Case 4: If the last tile is Orange (O), Contribution $T_{n-2}$
+
+\vspace{0.1in} - After we combine our base cases together, we get $T_n=T_{n-1}+3T_{n-2}$ with $T_{n-1}$ accounting for cases ending in Red (R) and $3T_{n-2}$ accounting for cases that end in Purple (P), Orange (O), Green (G) or Blue (B).
+
+\vspace{0.1in} - Next, we calculate our base cases individually, starting with n=1 and n=2
+
+\vspace{0.1in}\indent\indent - For $n=1$, The only valid tiles are G, B, R, leading to $T_1=3$
+
+\vspace{0.1in}\indent\indent - For $n=2$, The only possible tilings are GB, GR, BG, BR, RB, RR, OR, PR, leading to $T_2=8$
+
+\vspace{0.1in} - With this, the recurrence relation formula would be $T_n=T_{n-1}+3T_{n-2}$ for $n>=3$ with inital conditions of $T_1=3$ and $T_2=8$
+
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%
+
+
+\paragraph{Academic integrity declaration.}
+The homework papers must include at the end an academic integrity declaration. This should be a brief paragraph where you state
+\emph{in your own words}  (1) whether you did the homework individually or in collaboration with a partner student (if so, provide the name), 
+and (2) whether you used any external help or resources. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\vskip 0.1in
+
+\paragraph{Submission.}
+To submit the homework, you need to upload the pdf file to Gradescope. If you submit with a partner, you need
+to put two names on the assignment and submit it as a group assignment.
+\end{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%

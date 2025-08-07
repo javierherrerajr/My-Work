@@ -1,0 +1,204 @@
+\documentclass{article}
+
+\usepackage{fullpage,latexsym,picinpar,amsmath,amsfonts,graphicx}
+
+\input{macros.tex}
+%\newcommand{\hwduedate}{{}}
+
+\begin{document}
+
+\centerline{\large \bf CS111 ASSIGNMENT 4}
+%\centerline{due {\hwduedate}}
+
+
+\vskip 0.15in
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\calT}{{\mathcal{T}}}
+
+
+\begin{problem}
+Give an asymptotic estimate, using the $\Theta$-notation, of the number of letters printed by the
+algorithms given below. Give a complete justification for your answer, by providing an appropriate recurrence
+equation and its solution.
+
+\medskip
+\noindent
+(a) 
+\hspace{0.01in}
+%
+\begin{minipage}[t]{2.4in}
+\strut\vspace*{- 2.5 \baselineskip}\newline 
+\input{pseudocode.tex}
+\begin{program}
+algorithm |PrintAs|$(n)$
+   if $n\le 1$ then
+      |print("AAA")|
+   else
+      for $j\assign 1$ to $n^3$
+         do |print("A")|
+      for $i\assign 1$ to $5$ do
+         |PrintAs|$(\,\floor{n/2}\,)$
+| - The statement| if $n\le 1$ then |print("AAA")| |is a constant statement| $\Theta$|(1)|. 
+| - Then, the first for loop runs for| $n^3$ |times, so it prints| $\Theta$|($n^3$)| |letters.|
+| - Lasty, The second for loop runs for| $5$ |times, and it calls the function| |PrintAs| |recursively with| $\floor{n/2}$ |as the argument.|
+| - Therefore, The recurrence equation is| $T(n) = 5T(\floor{n/2}) + \Theta(n^3)$ |.|
+| - Since the summation of the geometric series is| $T(n) = n^3\sum_{i=0}^{\log n} \left(\frac{5}{8}\right)^i$|, the solution of the recurrence equation is| $\Theta(n^3)$ |.|
+\end{program}
+\end{minipage}
+%
+\hspace{0.4in}
+(b) 
+\hspace{0.01in}
+%
+\begin{minipage}[t]{2.4in}
+\strut\vspace*{- 2.5 \baselineskip}\newline 
+\input{pseudocode.tex}
+\begin{program}
+algorithm |PrintBs|$(n)$
+   if $n\ge 4$ then
+      for $j\assign 1$ to $n^2$
+         do |print("B")|
+      for $i\assign 1$ to $6$ do
+         |PrintBs|$(\,\floor{n/4}\,)$
+      for $i\assign 1$ to $10$ do
+         |PrintBs|$(\,\ceiling{n/4}\,)$
+| - Initial condition is| if $n\ge4$|.|
+| - Then, the first for loop runs for| $n^2$ |times, so it prints| $\Theta$|($n^2$)| |letters.|
+| - Next, there are 6 calls to print PrintBs with| $\floor{n/4}$ |as the argument. Same with the last for loop, having 10 calls to PrintBs| $\ceiling{n/4}$ |as the argument.|
+| - Therefore, The recurrence equation is| $T(n) = 16T(\floor{n/4}) + \Theta(n^2)$ |.|
+| - After using Master Theorem,| $T(n)=aT(n/b)+f(n)$|, with| $a=16, b=4, f(n)=n^2$|, the solution of the recurrence equation is| $\Theta(n^2log(n))$ |.|
+\end{program}
+\end{minipage}
+
+\medskip
+\noindent
+(c) 
+\hspace{0.01in}
+%
+\begin{minipage}[t]{2.4in}
+\strut\vspace*{- 2.5 \baselineskip}\newline 
+\input{pseudocode.tex}
+\begin{program}
+algorithm |PrintCs|$(n)$
+   if $n\le 2$ then
+      |print("C")|
+   else
+      for $j\assign 1$ to $n$
+         do |print("C")|
+      |PrintCs|$(\,\floor{n/3}\,)$
+      |PrintCs|$(\,\floor{n/3}\,)$
+      |PrintCs|$(\,\floor{n/3}\,)$
+      |PrintCs|$(\,\floor{n/3}\,)$
+| - The statement| if $n\le 2$ then |print("C")| |is a constant statement| $\Theta$|(1)|.
+| - Then, the first for loop runs for| $n$ |times, so it prints| $\Theta$|($n$)| |letters.|
+| - Next, there are 4 recursive calls to print PrintCs with| $\floor{n/3}$ |as the argument.|
+| - Therefore, The recurrence equation is| $T(n) = 4T(\floor{n/3}) + \Theta(n)$ |.|
+| - Using Recursion Expansion, the equation now equals to| $T(n)=n+4(n/3)+4^2(n/9)+...$|.| |This recursion follows the form| $T(n)=n\sum_{i=0}^{log(n)}(4/3)^i$
+| - Since we can see that| $(4/3)^i$ |dominates, the solution grows as| $T(n)=\theta(n^{1.26})$|.|
+| - Therefore, the solution of the recurrence equation is| $\Theta(n^{log_3 4})$|.|
+\end{program}
+\end{minipage}
+%
+\hspace{0.4in}
+(d) 
+\hspace{0.01in}
+%
+\begin{minipage}[t]{2.4in}
+\strut\vspace*{- 2.5 \baselineskip}\newline 
+\input{pseudocode.tex}
+\begin{program}
+algorithm |PrintDs|$(n)$  
+   if $n\ge 5$ then
+      |print("D")|
+      |print("D")|
+     if $(x \equiv 0 \pmod 2)$ then 
+         |PrintDs|$(\,\floor{n/5}\,)$
+         |PrintDs|$(\,\ceiling{n/5}\,)$
+         $x\assign \ x + 3$
+      else
+         |PrintDs|$(\,\ceiling{n/5}\,)$
+         |PrintDs|$(\,\floor{n/5}\,)$
+         $x\assign 5x + 3$
+| - Initial condition is| if $n\ge5$|.| |The first two print statements are constant| $\Theta$|(1)|.
+| - Since the problem involves a global variable| $x$| that changes non-trivially, we need to consider the value of| $x$| after each recursive call.|
+| - With this in mind, we cannot make exact recurrence relations however, the number of recursive calls per level tends to be| $T(n)=2T(n/5)+\Theta(1)$
+| - Using Master Theorem,| $T(n)=aT(n/b)+f(n)$|, with| $a=2, b=5, f(n)=1$|, the solution of the recurrence equation is| $\Theta(n^{log_5 2})$ |.|
+\end{program}
+\end{minipage}
+
+\noindent
+In part~(d), variable $x$ is a global variable initialized to $1$.
+\end{problem}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace{0.1in}
+\begin{problem}
+A school has three clubs: the Art Club, the Band, and the Computer Science Club, with a total of 129 members across all clubs. The following information is known about the memberships of these clubs:
+
+\noindent 1. The Band has twice as many members as the Art Club, and the Computer Science Club has three times as many members as the Art Club.
+
+\noindent 2. There are 18 members who are in both, the Art Club and the Band, and 20 members who are in both, the Art Club and the Computer Science Club. Additionally, 24 members are in both, the Band and the Computer Science Club.
+
+\noindent 3. There are 11 members who belong to all three clubs.
+
+\noindent Use the inclusion-exclusion principle to determine the number of members in each club. Show your work.
+
+\vspace{0.1in} - For simplicity, let's denote the number of members in the Art Club, Band, and Computer Science Club as $A$, $B$, and $C$ respectively.
+
+\vspace{0.1in} - With this in mind, we can say that $B=2A$ and $C=3A$. We can also use the inclusion-exclusion principle which states that $A+B+C-(AB+AC+BC)+ABC=129$
+
+\vspace{0.1in} - Substituting the values of $B$ and $C$ into the equation, we get $A+2A+3A-(18+20+24)+11=129$ and after solving for $A$, we get $A=30$. After substituting for $A$, we get $B=60$ and $C=90$. Therefore, the number of members in the Art Club, Band, and Computer Science Club are 30, 60, and 90 respectively.
+
+\end{problem}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+A gourmet chocolate shop is preparing custom chocolate boxes, each filled with 54 chocolates selected from four types: Dark Raspberry Night (dark chocolate with raspberries), Hazelnut Noir (dark chocolate with hazelnuts), Espresso Truffle (dark chocolate with coffee cream), and Walnut Maple  (milk chocolate with walnuts and a hint of maple).
+
+\noindent To maintain the perfect balance of flavors, the chocolatier insists on including at least 15 Dark Raspberry Night ($r$) but no more than 10 Walnut Maple chocolates  ($w$). Meanwhile, the number of Espresso Truffle  ($e$) and Hazelnut Noir  ($h$) pieces must each be between 8 and 17.
+
+\noindent How many possible ways can the chocolatier assemble these custom boxes while meeting the flavor requirements?
+
+\noindent You need to give a complete derivation for the final answer, using the method developed in class. 
+(Brute force listing of all lists will not be accepted.)
+
+\vspace{0.1in} - Let's denote the number of chocolates of each type as $r$ for Dark :Raspberry, $w$ for Walnut Maple, $e$ Espresso Truffle, and $h$ for Hazelnut Noir.
+
+\vspace{0.1in} - We can say that the constraints are $15 \leq r \leq 54$, $0 \leq w \leq 10$, $8 \leq e \leq 17$, and $8 \leq h \leq 17$.
+
+\vspace{0.1in} - After defining new variables which are $r'=r-15$, $w'=w$, $e'=e-8$, and $h'=h-8$, we can make a new equation which is $r'+w'+e'+h'=54-(15,8,8)=23$ using our constraints.
+
+\vspace{0.1in} - Using the stars and bars method, we can say that the number of ways to distribute 23 chocolates into 4 types is $\binom{23+4-1}{4-1}=\binom{26}{3}=2600$.
+
+\vspace{0.1in} - Lastly, we apply the inclusion-exclusion principle to account for the constraints. We can say that the number of ways to distribute 23 chocolates into 4 types with the constraints is $2600-(560+560+455)+(20+10+10)=1065$.
+
+\end{problem}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Academic integrity declaration.}
+The homework papers must include at the end an academic integrity declaration. This should be a short paragraph where you briefly explain 
+\emph{in your own words}  (1) whether you did the homework individually or in collaboration with a partner student (if so, provide the name), 
+and (2) whether you used any external help or resources. 
+
+\vspace{0.1in} - 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip 0.1in
+\paragraph{Submission.}
+To submit the homework, you need to upload the pdf file to Gradescope. If you submit with a partner, you need
+to put two names on the assignment and submit it as a group assignment.
+Remember that only {\LaTeX} papers are accepted. 
+
+\end{document}

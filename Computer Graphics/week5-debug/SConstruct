@@ -1,0 +1,5 @@
+import os
+env = Environment(ENV = os.environ)
+env.Append(CXXFLAGS=["-g", "-std=c++14", "-Wno-return-local-addr"])
+env.Program("prog-5.cpp")
+env.Program("prog-6.cpp")

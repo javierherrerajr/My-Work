@@ -1,0 +1,73 @@
+% \program and \endprogram - TeX macros for typesetting algorithms
+% David Eppstein / Columbia University / 23 Oct 1987
+%
+% This is abstracted from a bunch of other macros, and not tested,
+% so there may still be some bugs.  Please tell me if you find any.
+%
+% Keywords are bold, math is italic with roman digits, and | delimits
+% roman text.  Outside the display | delimits short program fragments.
+% In non-program math mode | is a vertical bar as usual.
+% You are more likely to get good results by only using spaces for
+% indentation than by also using tabs.  Examples of use:
+%
+% \program
+% for $foo := 1$ to $20$ do
+%     |calculate something based on $i$|;
+% \endprogram
+%
+% Text mentioning variable |$foo$| used as the index of a |for| loop...
+%
+% Note that in the above line, $foo$ without the vertical bars would be
+% incorrect, because normal math mode uses strange inter-letter spacing.
+
+\def\program{\begingroup\obeylines\obeytabs\medskip\narrower\narrower\progmode}
+\def\endprogram{\endgroup\medskip}
+
+\newif\ifprogmode\progmodefalse		    % Make cond for program mode
+\def\progmode{\progmodetrue\progsemi
+  \everymath={\progmath}\everydisplay={\progmath}\bf}
+
+\let\semicolon;                             % Semi in programs always is roman
+\def\progsemi{\catcode`;=\active}
+{\catcode`;=\active\gdef;{\hbox{\rm\semicolon}}}
+
+% Define what to do on entering program math mode.
+% : becomes our smart colon that turns := into left rightarrow.
+% spaces are no longer active.  letters are italic, but digits are roman.
+
+\def\progmath{\it			    % Italic for labels in programs
+  \catcode`:=\active\catcode` =10\catcode`^^I=10    % Colon special, space not
+  \mathcode`0="0030\mathcode`1="0031\mathcode`2="0032\mathcode`3="0033
+  \mathcode`4="0034\mathcode`5="0035\mathcode`6="0036\mathcode`7="0037
+  \mathcode`8="0038\mathcode`9="0039\relax} % Roman not italic numerals
+
+% Colon in program math checks for := and if so becomes left rightarrow
+
+{\catcode`:=\active\gdef:{\futurelet\next\smartcolon}}   % Make colon active
+\def\smartcolon{\ifx=\next\let\next\eatgets\else\let\next\colon\fi\next}
+\def\eatgets#1{\leftarrow}		    % Eat equal sign and make rightarrow
+
+% Vertical bars are active, bracketing text when in program displays,
+% bracketing program mode when in text, and making abs val signs in math.
+% The hskip before the begingroup is so that if a | is the start of a program
+% line the paragraph will start outside the group and parskip will get set.
+
+\let\vbar=|\catcode`|=\active		    % Save old vbar, make it active
+\newif\ifprogblock \progblockfalse
+\def|{\ifmmode \vbar                % vbar in math mode acts like before
+      \else\ifprogblock \endgroup   % but otherwise it delimits prog stuff
+      \else \hskip 0pt\begingroup   % when starting: hskip to start para
+        \progblocktrue              % make the next vbar exit
+        \ifprogmode \rm             % if this is display prog, delimits text
+        \else \progmode \fi\fi\fi}  % if normal text, delimits program literal
+
+% Set up to treat spaces and tabs literally.
+% Spaces at the start of lines will indent the line by exactly 0.5em more,
+% but spaces in the middle of a line will be treated normally.
+
+{\obeyspaces
+\gdef\obeytabs{\parindent=0pt\everypar={\parindent=0pt}\catcode`\^^I=\active
+\obeyspaces\let =\smartspace}\obeytabs\gdef^^I{        }}
+
+\def\smartspace{\ifvmode\advance\parindent by.5em\else\space\fi}
+
