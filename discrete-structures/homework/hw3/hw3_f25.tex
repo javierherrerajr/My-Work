@@ -1,0 +1,436 @@
+\documentclass{article}
+
+\usepackage{fullpage,latexsym,picinpar,amsmath,amsfonts,graphicx}
+
+\input{macros.tex}
+
+\begin{document}
+
+\centerline{\large \bf CS 111 ASSIGNMENT 3 }
+
+\vskip 0.2in
+
+\vskip 0.1in
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\noindent \textbf{Problem 1:}
+
+\vspace{0.1in}
+
+\noindent a) Consider the following linear homogeneous recurrence relation: $R_n = 4R_{n-1} - 3R_{n-2}$. It is known that: $R_0 = 1$, $R_2 = 5$. Find $R_3$.
+
+\vspace {0.1in}
+\noindent b) Determine the general solution of the recurrence  equation if its characteristic equation has the following roots:  1, 1, -2, -2, -2, 7.
+
+\vspace {0.1in}
+\noindent c) Consider the sequence defined by $P_n = 2\cdot 3^n + 6^n$, for all $n\ge 0$.
+Give a complete homogeneous recurrence relation (with the initial conditions) for $P_n$. Your equation must be of degree $2$. Show your work.
+
+\vspace {0.1in}
+\noindent  d) Determine the general solution of the recurrence  equation $A_n = 256A_{n-4}$.
+
+\vspace {0.1in}
+
+\noindent  e) Solve the following homogeneous recurrence equation:
+\begin{eqnarray*}
+        f_n &=& f_{n-1} + 4f_{n-2} + 2f_{n-3}\\
+        f_0 &=& 0 \\
+        f_1 &=& 1 \\
+		f_2 &=& 4 
+\end{eqnarray*}
+
+Show your work (all steps: the characteristic polynomial and its roots, the general solution, using the initial conditions to compute the final solution. You don't need to show the process of solving the system of linear equations).
+
+\vskip 0.2in
+
+\begin{solution}
+
+\noindent \textbf{a)} $R_1$ using the recurrence relation:
+$$R_2 = 4R_1 - 3R_0$$
+$$5 = 4R_1 - 3(1)$$
+$$5 = 4R_1 - 3$$
+$$R_1 = 2$$
+
+$R_3$:
+$$R_3 = 4R_2 - 3R_1 = 4(5) - 3(2) = 20 - 6 = 14$$
+
+\textbf{Answer:} ${R_3 = 14}$
+
+\vspace{0.1in}
+
+\noindent \textbf{b)} 
+\begin{itemize}
+    \item Root $r_1 = 1$ with multiplicity 2: contributes $\alpha_1 \cdot 1^n + \alpha_2 \cdot n \cdot 1^n = \alpha_1 + \alpha_2 n$
+    \item Root $r_2 = -2$ with multiplicity 3: contributes $\alpha_3(-2)^n + \alpha_4 n(-2)^n + \alpha_5 n^2(-2)^n$
+    \item Root $r_3 = 7$ with multiplicity 1: contributes $\alpha_6 \cdot 7^n$
+\end{itemize}
+
+\textbf{General solution:}
+$${f_n = \alpha_1 + \alpha_2 n + \alpha_3(-2)^n + \alpha_4 n(-2)^n + \alpha_5 n^2(-2)^n + \alpha_6 \cdot 7^n}$$
+
+\vspace{0.1in}
+
+\noindent \textbf{c)} 
+Since $6^n = (2 \cdot 3)^n = 2^n \cdot 3^n$, we have:
+$$P_n = 2 \cdot 3^n + 2^n \cdot 3^n$$
+
+\noindent
+The closed form suggests that the solution is a linear combination of $3^n$ and $6^n$. Therefore, the characteristic equation should have roots $r_1 = 3$ and $r_2 = 6$:
+$$(x - 3)(x - 6) = 0$$
+$$x^2 - 9x + 18 = 0$$
+
+Recurrence relation:
+$$P_n = 9P_{n-1} - 18P_{n-2}$$
+
+Initial conditions:
+$$P_0 = 2 \cdot 3^0 + 6^0 = 2(1) + 1 = 3$$
+$$P_1 = 2 \cdot 3^1 + 6^1 = 2(3) + 6 = 6 + 6 = 12$$
+
+\textbf{Complete recurrence relation:}
+$${\begin{cases}
+P_n = 9P_{n-1} - 18P_{n-2}, & n \geq 2\\
+P_0 = 3\\
+P_1 = 12
+\end{cases}}$$
+
+\textbf{Verification:} $P_2 = 9(12) - 18(3) = 108 - 54 = 54$
+
+Check using original formula: $P_2 = 2 \cdot 3^2 + 6^2 = 2(9) + 36 = 18 + 36 = 54$ (Correct)
+
+\vspace{0.1in}
+
+\noindent \textbf{d)} 
+We rewrite the recurrence as: $A_n - 256A_{n-4} = 0$
+
+The characteristic equation is: $x^4 - 256 = 0$, which gives $x^4 = 256 = 4^4$
+
+The fourth roots of 256 are: $x = 4, -4, 4i, -4i$
+
+$4i = 4e^{i\pi/2}$ and $-4i = 4e^{-i\pi/2}$:
+
+\textbf{General solution:}
+$${A_n = \alpha_1 \cdot 4^n + \alpha_2 \cdot (-4)^n + 4^n\left[\alpha_3 \cos\left(\frac{\pi n}{2}\right) + \alpha_4 \sin\left(\frac{\pi n}{2}\right)\right]}$$
+
+\vspace{0.1in}
+
+\noindent \textbf{e)}
+The characteristic equation is:
+$$x^3 = x^2 + 4x + 2$$
+$$x^3 - x^2 - 4x - 2 = 0$$
+
+Rational roots (factors of 2): $\pm 1, \pm 2$
+
+$x = -1$: $(-1)^3 - (-1)^2 - 4(-1) - 2 = -1 - 1 + 4 - 2 = 0$ 
+
+So $(x + 1)$ is a factor:
+$$x^3 - x^2 - 4x - 2 = (x + 1)(x^2 - 2x - 2)$$
+
+Using the quadratic formula on $x^2 - 2x - 2 = 0$:
+$$x = \frac{2 \pm \sqrt{4 + 8}}{2} = \frac{2 \pm \sqrt{12}}{2} = \frac{2 \pm 2\sqrt{3}}{2} = 1 \pm \sqrt{3}$$
+
+\textbf{Roots:} $r_1 = -1$, $r_2 = 1 + \sqrt{3}$, $r_3 = 1 - \sqrt{3}$
+
+\textbf{General solution}
+
+Since all roots have multiplicity 1, the general solution is:
+$$f_n = \alpha_1(-1)^n + \alpha_2(1 + \sqrt{3})^n + \alpha_3(1 - \sqrt{3})^n$$
+
+\textbf{Apply initial conditions}
+
+Using $f_0 = 0$:
+$$\alpha_1 \cdot 1 + \alpha_2 \cdot 1 + \alpha_3 \cdot 1 = 0$$
+$$\alpha_1 + \alpha_2 + \alpha_3 = 0 \quad \text{...(1)}$$
+
+Using $f_1 = 1$:
+$$\alpha_1(-1) + \alpha_2(1 + \sqrt{3}) + \alpha_3(1 - \sqrt{3}) = 1$$
+$$-\alpha_1 + \alpha_2(1 + \sqrt{3}) + \alpha_3(1 - \sqrt{3}) = 1 \quad \text{...(2)}$$
+
+Using $f_2 = 4$:
+$$\alpha_1 \cdot 1 + \alpha_2(1 + \sqrt{3})^2 + \alpha_3(1 - \sqrt{3})^2 = 4$$
+
+Note: $(1 + \sqrt{3})^2 = 1 + 2\sqrt{3} + 3 = 4 + 2\sqrt{3}$ and $(1 - \sqrt{3})^2 = 1 - 2\sqrt{3} + 3 = 4 - 2\sqrt{3}$
+
+$$\alpha_1 + \alpha_2(4 + 2\sqrt{3}) + \alpha_3(4 - 2\sqrt{3}) = 4 \quad \text{...(3)}$$
+
+From equation (1): $\alpha_1 = -\alpha_2 - \alpha_3$
+
+Substituting into equation (2):
+$$\alpha_2 - \alpha_3 + \alpha_2(1 + \sqrt{3}) + \alpha_3(1 - \sqrt{3}) = 1$$
+$$\alpha_2(2 + \sqrt{3}) + \alpha_3(2 - \sqrt{3}) = 1 \quad \text{...(4)}$$
+
+Substituting $\alpha_1 = -\alpha_2 - \alpha_3$ into equation (3):
+$$-\alpha_2 - \alpha_3 + \alpha_2(4 + 2\sqrt{3}) + \alpha_3(4 - 2\sqrt{3}) = 4$$
+$$\alpha_2(3 + 2\sqrt{3}) + \alpha_3(3 - 2\sqrt{3}) = 4 \quad \text{...(5)}$$
+
+Solving equations (4) and (5):
+
+From equation (4): $\alpha_3 = \frac{1 - \alpha_2(2 + \sqrt{3})}{2 - \sqrt{3}}$
+
+Substituting into equation (5) and solving (system of linear equations):
+
+$$\alpha_1 = -\frac{1}{3}, \quad \alpha_2 = \frac{1 + \sqrt{3}}{6}, \quad \alpha_3 = \frac{1 - \sqrt{3}}{6}$$
+
+\textbf{Final solution:}
+$$\boxed{f_n = -\frac{1}{3}(-1)^n + \frac{1 + \sqrt{3}}{6}(1 + \sqrt{3})^n + \frac{1 - \sqrt{3}}{6}(1 - \sqrt{3})^n}$$
+
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip 0.2in
+
+\noindent \textbf{Problem 2:}
+$a)$  Find a particular solution of the recurrence 
+$$t_n = 4t_{n-1}-4t_{n-2} + 2^n$$
+Show your work (all steps).
+
+\vskip 0.1in
+
+\noindent $b)$ EXTRA CREDIT, 3 p. Find the general solution of the recurrence 
+$$f_n = 13f_{n-2} + 12f_{n-3} + 2n + 1$$
+Show your work (the associated homogeneous equation, the characteristic polynomial and its roots, the general solution of the homogeneous equation, computing a particular solution, the general solution of the non-homogeneous equation).
+
+\vskip 0.2in
+
+\begin{solution}
+
+\noindent \textbf{a)} 
+The associated homogeneous equation is:
+$$t_n = 4t_{n-1} - 4t_{n-2}$$
+
+Characteristic equation: $x^2 = 4x - 4$, which gives $x^2 - 4x + 4 = 0$
+
+Factoring: $(x - 2)^2 = 0$
+
+Root: $r = 2$ with multiplicity 2
+
+General solution of the homogeneous equation:
+$$t'_n = \alpha_1 \cdot 2^n + \alpha_2 \cdot n \cdot 2^n$$
+
+The non-homogeneous term $q(n) = 2^n$. 
+
+Since $2$ is a root of the characteristic equation with multiplicity 2:
+$$t''_n = \beta n^2 \cdot 2^n$$
+
+Substitute into the recurrence:
+$$\beta n^2 \cdot 2^n = 4\beta(n-1)^2 \cdot 2^{n-1} - 4\beta(n-2)^2 \cdot 2^{n-2} + 2^n$$
+$$4\beta n^2 = 8\beta(n-1)^2 - 4\beta(n-2)^2 + 4$$
+$$4\beta n^2 = 8\beta(n^2 - 2n + 1) - 4\beta(n^2 - 4n + 4) + 4$$
+$$4\beta n^2 = 8\beta n^2 - 16\beta n + 8\beta - 4\beta n^2 + 16\beta n - 16\beta + 4$$
+$$4\beta n^2 = 4\beta n^2 - 8\beta + 4$$
+
+Simplifying:
+$$0 = -8\beta + 4$$
+$$\beta = \frac{1}{2}$$
+
+\textbf{Particular solution:} 
+$${t''_n = \frac{1}{2}n^2 \cdot 2^n}$$
+
+\vskip 0.1in
+
+\noindent \textbf{b)} 
+The associated homogeneous equation is:
+$$f_n = 13f_{n-2} + 12f_{n-3}$$
+
+Rewriting: $f_n - 13f_{n-2} - 12f_{n-3} = 0$
+
+Characteristic equation: $x^3 - 13x - 12 = 0$
+
+Rational roots (factors of 12): $\pm 1, \pm 2, \pm 3, \pm 4, \pm 6, \pm 12$
+
+$x = -1$: $(-1)^3 - 13(-1) - 12 = -1 + 13 - 12 = 0$ 
+
+Factor out $(x + 1)$:
+$$x^3 - 13x - 12 = (x + 1)(x^2 - x - 12)$$
+
+Factor $x^2 - x - 12$:
+$$x^2 - x - 12 = (x - 4)(x + 3)$$
+
+Therefore:
+$$x^3 - 13x - 12 = (x + 1)(x - 4)(x + 3)$$
+
+\textbf{Roots:} $r_1 = -1$, $r_2 = 4$, $r_3 = -3$
+
+Since all roots have multiplicity 1:
+$$f'_n = \alpha_1(-1)^n + \alpha_2 \cdot 4^n + \alpha_3(-3)^n$$
+
+The non-homogeneous term is $q(n) = 2n + 1$ (degree 1).
+
+$$f''_n = \beta_1 n + \beta_2$$
+
+Substitute into the recurrence:
+$$\beta_1 n + \beta_2 = 13[\beta_1(n-2) + \beta_2] + 12[\beta_1(n-3) + \beta_2] + 2n + 1$$
+
+Expand:
+$$\beta_1 n + \beta_2 = 13\beta_1 n - 26\beta_1 + 13\beta_2 + 12\beta_1 n - 36\beta_1 + 12\beta_2 + 2n + 1$$
+$$\beta_1 n + \beta_2 = (13\beta_1 + 12\beta_1 + 2)n + (-26\beta_1 - 36\beta_1 + 13\beta_2 + 12\beta_2 + 1)$$
+$$\beta_1 n + \beta_2 = (25\beta_1 + 2)n + (-62\beta_1 + 25\beta_2 + 1)$$
+
+Matching coefficients:
+
+For coefficient of $n$:
+$$\beta_1 = 25\beta_1 + 2$$
+$$-24\beta_1 = 2$$
+$$\beta_1 = -\frac{1}{12}$$
+
+For constant term:
+$$\beta_2 = -62\beta_1 + 25\beta_2 + 1$$
+$$-24\beta_2 = -62\beta_1 + 1$$
+$$\beta_2 = \frac{62\beta_1 - 1}{24} = \frac{62 \cdot (-\frac{1}{12}) - 1}{24} = \frac{-\frac{62}{12} - 1}{24} = \frac{-\frac{62 + 12}{12}}{24} = \frac{-\frac{74}{12}}{24} = -\frac{74}{288} = -\frac{37}{144}$$
+
+Particular solution:
+$$f''_n = -\frac{1}{12}n - \frac{37}{144}$$
+
+\textbf{Step 5: General solution of the non-homogeneous equation}
+
+$${f_n = \alpha_1(-1)^n + \alpha_2 \cdot 4^n + \alpha_3(-3)^n - \frac{1}{12}n - \frac{37}{144}}$$
+
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip 0.2in
+
+\noindent \textbf{Problem 3:}
+We want to tile an $n\times 1$ strip with $1\times 1$ tiles that are green (G), blue (B), and red (R), $2\times 1$ purple (P) and $2\times 1$ orange (O), and $3\times 1$ lavender (L) tiles. Green, blue and purple tiles cannot be next to each other, and there should be no two purple or three blue or green tiles in a row. To clarify, GG and BB are allowed, but any other combinations of G, B, P, as well as  GGG, BBB, PP are not.  For ex., GGOBR is allowed, but GGGOBR, GROPP and PBOBR are not. Give a formula for the number of such tilings. Your solution must include a recurrence equation (with initial conditions!), and a full justification. You do not need to solve it. 
+
+\vskip 0.2in
+
+\begin{solution}
+$T_n$ denote the number of valid tilings of an $n \times 1$ strip, using the following tiles:
+
+\[
+\text{Green (G), Blue (B), Red (R), Purple (P), Orange (O), Lavender (L)}.
+\]
+
+The restrictions are:
+\begin{itemize}
+        \item G, B, and P cannot be adjacent to each other.
+        \item GG and BB are allowed, but GGG, BBB, and PP are not.
+\end{itemize}
+  
+\medskip
+\noindent\textbf{Type 1: Ends with R.}  
+An R-tile occupies one cell and can follow any valid tiling of length $n-1 = T_{n-1}.$
+        
+\medskip
+\noindent\textbf{Type 2: Ends with O.}  
+An O-tile occupies two cells and can follow any valid tiling of length $n-2 = T_{n-2}.$
+        
+\medskip
+\noindent\textbf{Type 3: Ends with L.}  
+An L-tile occupies three cells and can follow any valid tiling of length $n-3 = T_{n-3}.$
+        
+\medskip
+\noindent\textbf{Type 4: Ends with G, B, or P.}  
+Following adjacent restrictions
+        
+\begin{itemize}
+    \item G, B, or P may \emph{only follow} tiles of type R, O, or L (since none of G, B, or P can be adjacent to another from that set).
+    \item G and B may appear singly or doubled (GG or BB), while P appears only singly.
+\end{itemize}
+        
+Let us define:
+\begin{align*}
+S_n &= \text{number of tilings of length } n \text{ ending with } R, O, \text{ or } L.\\
+G_n &= \text{number of tilings of length } n \text{ ending with } G \text{ or } GG.\\
+B_n &= \text{number of tilings of length } n \text{ ending with } B \text{ or } BB.\\
+P_n &= \text{number of tilings of length } n \text{ ending with } P.
+\end{align*}
+        
+Then the total number of valid tilings is:
+\[
+T_n = S_n + G_n + B_n + P_n.
+\]
+        
+\medskip
+\noindent\textbf{a)}
+\begin{align*}
+S_n &= T_{n-1} + T_{n-2} + T_{n-3} \qquad &\text{(ending with R, O, or L)}\\[4pt]
+G_n &= S_{n-1} + S_{n-2} \qquad &\text{(a single G or double GG)}\\[4pt]
+B_n &= S_{n-1} + S_{n-2} \qquad &\text{(a single B or double BB)}\\[4pt]
+P_n &= S_{n-2} \qquad &\text{(a single P of length 2)}
+\end{align*}
+        
+\medskip
+\noindent\textbf{b)}
+\[
+T_n = S_n + G_n + B_n + P_n
+      = S_n + 2(S_{n-1}+S_{n-2}) + S_{n-2}.
+\]
+Simplify:
+\[
+T_n = S_n + 2S_{n-1} + 3S_{n-2}.
+\]
+Now substitute the expression for $S_n = T_{n-1}+T_{n-2}+T_{n-3}$:
+\begin{align*}
+T_n &= (T_{n-1}+T_{n-2}+T_{n-3}) + 2(T_{n-2}+T_{n-3}+T_{n-4}) + 3(T_{n-3}+T_{n-4}+T_{n-5})\\[4pt]
+&= T_{n-1} + 3T_{n-2} + 6T_{n-3} + 5T_{n-4} + 3T_{n-5}.
+\end{align*}
+        
+\medskip
+\noindent\textbf{c)}
+\[
+{T_n = T_{n-1} + 3T_{n-2} + 6T_{n-3} + 5T_{n-4} + 3T_{n-5}}, \qquad n \ge 5.
+\]
+        
+\medskip
+\noindent\textbf{d) Initial conditions.}
+Enumerating all valid tilings for small $n$:
+\begin{align*}
+T_0 &= 1 &\text{(empty tiling)}\\
+T_1 &= 3 &\text{(G, B, R)}\\
+T_2 &= 9 &\text{(RR, RG, RB, GR, GG, BR, BB, O, P)}\\
+T_3 &= 24 &\text{(by direct enumeration)}\\
+T_4 &= 83 &\text{(by applying recurrence or enumeration)}
+\end{align*}
+        
+\medskip
+\noindent\textbf{Final answer:}
+\[
+{
+\begin{aligned}
+T_0 &= 1, \quad T_1 = 3, \quad T_2 = 9, \quad T_3 = 24, \quad T_4 = 83,\\
+T_n &= T_{n-1} + 3T_{n-2} + 6T_{n-3} + 5T_{n-4} + 3T_{n-5}, \quad n \ge 5.
+\end{aligned}
+}
+\]
+        
+\medskip
+\noindent
+This is a linear homogeneous recurrence with constant coefficients, determined by considering all possible ending configurations of the tiling.
+        
+\end{solution}
+        
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Academic integrity declaration.}
+The homework papers must include at the end an academic integrity declaration. In this statement 
+each group member must summarize briefly, in their own words, their contributions to the homework.
+Each group member must also state that he/she verified and has full understanding of all solutions in the submission.
+In addition, you need to state all external help and resources you used.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip 0.1in
+\paragraph{Submission.}
+To submit the homework, you need to upload the pdf file to Gradescope. If you submit for a group, you need
+to put all member names on the assignment and submit it as a group assignment.
+
+\paragraph{Reminders.}
+Remember that only {\LaTeX} papers are accepted.
+
+\paragraph{Declaration:} For this assignment, I used a variety of resources which includes:
+
+\begin{itemize}
+        \item The Linear Recurrence Lecture notes on simple tiling
+        \item The sample quizzes with answers for quiz 3 so I can answer problem 1
+        \item This youtube video help me visualize tiling problems $https://www.youtube.com/watch?v=V_6Zkhyy0WM$ 
+        \item This approach helped me with my approach: $https://brainly.com/question/39007258$
+        \item I used ChatGPT to help me format my document, give me tips on problem 3 using the notes, and to clarify certain sections of the notes that helped with solving problem 1 and 2. 
+\end{itemize}
+
+
+
+\end{document}

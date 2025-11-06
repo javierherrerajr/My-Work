@@ -1,0 +1,294 @@
+\documentclass{article}
+
+\usepackage{fullpage,latexsym,picinpar,amsmath,amsfonts}
+
+\input{macros.tex}
+
+
+\begin{document}
+
+\centerline{\large \bf CS111 Fall'25 ASSIGNMENT 1}
+
+
+\vskip 0.2in
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Let $B(n)$ be the number of letters ``B'' printed by Algorithm~\textsc{PrintBs} below.
+Give the asymptotic estimate for function $B(n)$.
+Your solution \emph{must} consist of the following steps:
+%
+\begin{description} \setlength{\itemsep}{-0.01in}
+\item{(a)} First express $B(n)$ using the summation notation $\sum$.
+\item{(b)} Next, derive a closed-form expression\footnote{A closed-form expression is a formula that can be evaluated in some fixed number of arithmetic operations, independent of $n$. For example, $3n^5+n-1$ and $n2^n+5n^2$ are closed-form expressions, but $\sum_{i=1}^n i^2$ is not, as it involves $n-1$ additions.} for $B(n)$.
+\item{(c)}  Finally, give the asymptotic value of $B(n)$ using the $\Theta$-notation.
+\end{description}
+\noindent
+Show your work and include a justification for each step.
+\begin{tabbing}
+aa \= aa \= aa \= aa \= aa \= aa \= \kill
+\textbf{Algorithm} \textsc{Print\_Bs} $(n: \mbox{\bf integer})$ \\
+      \> \textbf{for} $i \leftarrow2$ \textbf{to} $3n + 1$ \textbf{do} \\
+      \> \> \textbf{for} $j \leftarrow i + 1$ \textbf{to} $2i$ \textbf{do} print(``B") \\
+      \> \textbf{for} $i \leftarrow 1$ \textbf{to} $2n$ \textbf{do} \\
+      \> \> \textbf{for} $j \leftarrow 1$ 
+\textbf{to} $(3i + 1)^2$ \textbf{do}  print(``B")
+\end{tabbing}
+
+
+\smallskip
+\noindent
+\emph{Note:} If you need any summation formulas for this problem, you are allowed to look them up. You do not need to prove them, you can just state in the assignment when you use them.
+
+\begin{solution}
+
+\noindent\textbf{(a)}
+\textbf{For $B_1(n)$:} The inner loop runs $2i - (i+1) + 1 = i$ times.
+$$B_1(n) = \sum_{i=2}^{3n+1} i$$
+\textbf{For $B_2(n)$:} The inner loop runs $(3i+1)^2 - 1 + 1 = (3i+1)^2$ times.
+$$B_2(n) = \sum_{i=1}^{2n} (3i+1)^2$$
+\textbf{Total $B(n)$:}
+$$B(n) = \sum_{i=2}^{3n+1} i + \sum_{i=1}^{2n} (3i+1)^2$$
+
+\noindent\textbf{(b)}
+\smallskip
+\noindent
+\textbf{For $B_1(n)$:} Using $\sum_{k=1}^{m} k = \frac{m(m+1)}{2}$:
+\begin{align*}
+B_1(n) &= \left(\sum_{i=1}^{3n+1} i\right) - 1 \\
+&= \frac{(3n+1)(3n+2)}{2} - 1 \\
+&= \frac{9n^2 + 9n + 2}{2} - \frac{2}{2} \\
+&= \frac{9n^2 + 9n}{2} = \frac{9}{2}n^2 + \frac{9}{2}n
+\end{align*}
+
+\noindent\textbf{For $B_2(n)$:} Using $\sum_{k=1}^{m} k^2 = \frac{m(m+1)(2m+1)}{6}$, $\sum_{k=1}^{m} k = \frac{m(m+1)}{2}$, and $\sum_{k=1}^{m} 1 = m$, with $m=2n$.
+\begin{align*}
+B_2(n) &= \sum_{i=1}^{2n} (9i^2 + 6i + 1) \\
+&= 9\sum_{i=1}^{2n} i^2 + 6\sum_{i=1}^{2n} i + \sum_{i=1}^{2n} 1 \\
+&= 9 \left( \frac{2n(2n+1)(4n+1)}{6} \right) + 6\left( \frac{2n(2n+1)}{2} \right) + 2n \\
+&= 3n(8n^2 + 6n + 1) + 6n(2n+1) + 2n \\
+&= (24n^3 + 18n^2 + 3n) + (12n^2 + 6n) + 2n \\
+&= 24n^3 + 30n^2 + 11n
+\end{align*}
+
+\noindent\textbf{Total $B(n)$:}
+\begin{align*}
+B(n) &= B_1(n) + B_2(n) \\
+&= \left(\frac{9}{2}n^2 + \frac{9}{2}n\right) + \left(24n^3 + 30n^2 + 11n\right) \\
+&= 24n^3 + \left(30 + 4.5\right)n^2 + \left(11 + 4.5\right)n \\
+&= 24n^3 + 34.5n^2 + 15.5n \\
+&= 24n^3 + \frac{69}{2}n^2 + \frac{31}{2}n
+\end{align*}
+
+\noindent\textbf{(c)}
+\smallskip
+\noindent
+The asymptotic growth of a polynomial is determined by its highest-degree term, $24n^3$. Therefore:
+$$B(n) = \mathbf{\Theta(n^3)}$$
+
+\end{solution}
+\end{problem}
+
+\medskip
+%%%%%%%%%%%%%%%%%% Problem 2 %%%%%%%%%%
+
+\begin{problem} 
+      Let $f(n) = n4^n + 10n^2$. Prove, directly from the definition, that $f(n) = O(5^n)$. Your solution \emph{must} consist of the
+      following steps.
+      
+      \smallskip
+      \noindent
+      (a) Solve the inequality $\frac{5}{4} x \geq x+1$ to show that it holds for all reals $x \ge 4$.
+      
+      \smallskip
+      \noindent
+      (b) Solve the inequality $5x^2 \geq (x + 1)^2$ to show that it holds for all reals $x \ge 4$.
+      
+      \smallskip
+      \noindent 
+      (c) Use mathematical induction to prove that $2\cdot 5^n \ge n4^n + 10n^2$ for all integers $n\ge 4$. Here you can use the inequalities from parts~(a) and~(b).
+      
+      \smallskip
+      \noindent
+      (d) Using the inequality from part~(c), prove that $f(n) = O(5^n)$.
+      You need to give a rigorous proof derived directly from 
+      the definition of the $O$-notation, without using any theorems from class.
+      (First, give a complete statement of the definition. 
+      Next, show how $f(n) = O(5^n)$ follows from this definition.)
+      
+\begin{solution}
+
+      \textbf{(a)}
+\begin{align*}
+\frac{5}{4}x &\ge x+1 \\
+\frac{1}{4}x &\ge 1 \\
+x &\ge 4
+\end{align*}
+The inequality holds if and only if $x \ge 4$. Thus, it holds for all reals $x \ge 4$.
+
+\textbf{(b)}
+\begin{align*}
+5x^2 &\ge x^2 + 2x + 1 \\
+4x^2 - 2x - 1 &\ge 0
+\end{align*}
+The quadratic $4x^2 - 2x - 1 = 0$ has roots at $x = \frac{1 \pm \sqrt{5}}{4}$. The positive root is $x_2 \approx 0.809$. Since $4x^2 - 2x - 1$ is an upward-opening parabola, the inequality holds for all $x \ge x_2$. Since $4 > 0.809$, it holds for all reals $x \ge 4$.
+
+\textbf{(c)}
+\smallskip
+\noindent
+Let $P(n)$ be the statement $2\cdot 5^n \ge n4^n + 10n^2$.
+
+\smallskip
+\noindent\textbf{Base Case ($n=4$):}
+$$2\cdot 5^4 = 1250$$
+$$4\cdot 4^4 + 10\cdot 4^2 = 1024 + 160 = 1184$$
+Since $1250 \ge 1184$, the base case holds.
+
+\smallskip
+\noindent\textbf{Inductive Step:} Assume $P(k)$ is true for $k \ge 4$: $2\cdot 5^k \ge k4^k + 10k^2$.
+We need to prove $P(k+1)$: $2\cdot 5^{k+1} \ge (k+1)4^{k+1} + 10(k+1)^2$.
+\begin{align*}
+2\cdot 5^{k+1} &= 5 \cdot (2\cdot 5^k) \\
+&\ge 5 (k4^k + 10k^2) \quad \text{(by IH)} \\
+&= 5k4^k + 50k^2 \quad (*)\end{align*}
+The target RHS is $(k+1)4^{k+1} + 10(k+1)^2 = 4(k+1)4^k + 10(k^2 + 2k + 1) = 4k4^k + 4\cdot 4^k + 10k^2 + 20k + 10$.
+We must show that $5k4^k + 50k^2$ is greater than or equal to the RHS:
+\begin{align*}
+(5k4^k + 50k^2) - (4k4^k + 4\cdot 4^k + 10k^2 + 20k + 10) \\
+&= (k4^k - 4\cdot 4^k) + (40k^2 - 20k - 10) \\
+&= (k-4)4^k + (40k^2 - 20k - 10)
+\end{align*}
+Since $k \ge 4$:
+1.  $(k-4)4^k \ge 0$.
+2.  $40k^2 - 20k - 10 > 0$ (since the polynomial is positive for $k \ge 4$, as shown in part b).
+Thus, the difference is $\ge 0$, which means $5k4^k + 50k^2 \ge (k+1)4^{k+1} + 10(k+1)^2$.
+Combining this with $(*)$, $P(k+1)$ is true.
+
+\textbf{(d)}
+\smallskip
+\noindent
+We say that $\mathbf{f(n) = O(g(n))}$ if there exist positive constants $C$ and $n_0$ such that:
+$$|f(n)| \le C|g(n)| \quad \text{for all } n \ge n_0$$
+\smallskip
+\noindent
+\textbf{Proof}: We have $f(n) = n4^n + 10n^2$ and $g(n) = 5^n$.
+From part (c), we know that for all integers $n \ge 4$:
+$$n4^n + 10n^2 \le 2\cdot 5^n$$
+Since $n \ge 4$, $f(n)$ and $5^n$ are positive, satisfying:
+$$|n4^n + 10n^2| \le 2|5^n| \quad \text{for all } n \ge 4$$
+We choose the positive constants:
+\begin{itemize}
+    \item $\mathbf{C = 2}$
+    \item $\mathbf{n_0 = 4}$
+\end{itemize}
+The condition $|f(n)| \le C|g(n)|$ is satisfied for all $n \ge n_0$.
+Therefore, $f(n) = O(5^n)$.
+\end{solution}
+
+
+\end{problem}
+
+\medskip
+%%%%%%%%%%%%%%%%%% Problem 3 %%%%%%%%%%
+
+\begin{problem} 
+Give asymptotic estimates, using the $\Theta$-notation, for the following functions:
+%
+\begin{description}\setlength{\itemsep}{-0.01in}
+%
+\item{(a)} $3n^6 + 5n^3 - 3n^2 + 1$
+\item{(b)} $ 4n^3 {\log^3} n + 4{n^2}{\log^4 n}+ 2n^4$
+\item{(c)} $3n^4\log^5 n + 2n^3\sqrt{n} \cdot \log^2 n + 2\sqrt{n^9}$
+\item{(d)} $n^3 \sqrt{n^5}  + n \cdot (1.2)^n +  4n^5 \log^3 n  $
+ \item{(e)} $n^7 + n^3 \cdot 4^n + n^2 \cdot \left(\textstyle \frac{9}{2}\right)^n $
+%
+\end{description}
+%
+For part (a), give a proof derived directly from the definition of the $O$-notation.
+For (b) - (e), justify your answers using the properties of asymptotic notations covered in class, including relations between the basic reference functions: $n^b$, $\log n$, and $c^n$.
+%
+
+\begin{solution}
+
+\noindent\textbf{(a) $3n^6 + 5n^3 - 3n^2 + 1$}
+$$\mathbf{\Theta(n^6)}$$
+
+\smallskip
+\noindent\textbf{Proof derived directly from the definition of the $O$-notation (for $O(n^6)$).}
+We show $f(n) = 3n^6 + 5n^3 - 3n^2 + 1 = O(n^6)$. We need $C, n_0 > 0$ such that $|f(n)| \le C|n^6|$ for $n \ge n_0$.
+For $n \ge 1$:
+$$|3n^6 + 5n^3 - 3n^2 + 1| \le 3n^6 + 5n^3 + 1$$
+Since $n^6 \ge n^3$ and $n^6 \ge 1$ for $n \ge 1$:
+$$3n^6 + 5n^3 + 1 \le 3n^6 + 5n^6 + 1n^6 = 9n^6$$
+By choosing $\mathbf{C=9}$ and $\mathbf{n_0=1}$, we satisfy the definition: $f(n) = O(n^6)$.
+(To fully show $\Theta(n^6)$, we also need to show $\Omega(n^6)$. For $n \ge 1$, $f(n) \ge 3n^6 + 5n^3 - 3n^2$. Since $n^3 \ge n^2$, $f(n) \ge 3n^6$. Choosing $C'=3, n'_0=1$ gives $\Omega(n^6)$.)
+
+\noindent\textbf{(b) $ 4n^3 {\log^3} n + 4{n^2}{\log^4 n}+ 2n^4$}
+\smallskip
+\noindent
+The terms are polynomial/poly-logarithmic. The dominant term is determined by the highest polynomial degree.
+\begin{itemize}
+    \item Term 1: $\Theta(n^3 \log^3 n)$
+    \item Term 2: $\Theta(n^2 \log^4 n)$
+    \item Term 3: $\Theta(n^4)$
+\end{itemize}
+Since $\mathbf{n^4}$ grows faster than any term of the form $n^c \log^b n$ where $c < 4$, the third term is dominant.
+$$\mathbf{\Theta(n^4)}$$
+
+\noindent\textbf{(c) $3n^4\log^5 n + 2n^3\sqrt{n} \cdot \log^2 n + 2\sqrt{n^9}$}
+\smallskip
+\noindent
+First, rewrite the terms with clear polynomial exponents:
+\begin{itemize}
+    \item Term 1: $\Theta(n^4 \log^5 n)$
+    \item Term 2: $2n^{3.5} \log^2 n = \Theta(n^{3.5} \log^2 n)$
+    \item Term 3: $2n^{4.5} = \Theta(n^{4.5})$
+\end{itemize}
+The highest polynomial degree is $\mathbf{n^{4.5}}$. This dominates $n^4 \log^5 n$ because $n^{4.5} = n^{4} \cdot n^{0.5}$, and the factor $n^{0.5}$ grows faster than $\log^5 n$.
+$$\mathbf{\Theta(n^{4.5}) \text{ or } \Theta(\sqrt{n^9})}$$
+
+\noindent\textbf{(d) $n^3 \sqrt{n^5}  + n \cdot (1.2)^n +  4n^5 \log^3 n  $}
+\smallskip
+\noindent
+The terms are $n^{5.5}$, $n \cdot (1.2)^n$, and $4n^5 \log^3 n$.
+**Exponential growth dominates polynomial growth.** Since $1.2 > 1$, the term $n \cdot (1.2)^n$ is dominant.
+$$\mathbf{\Theta(n(1.2)^n)}$$
+
+\noindent\textbf{(e) $n^7 + n^3 \cdot 4^n + n^2 \cdot \left(\textstyle \frac{9}{2}\right)^n $}
+\smallskip
+\noindent
+The function is dominated by the term with the **largest exponential base**. The bases are $4$ and $\frac{9}{2} = 4.5$.
+Since $4.5 > 4$, the last term is dominant.
+$$\mathbf{\Theta(n^2\cdot(\frac{9}{2})^n) \text{ or } \Theta(n^2\cdot(4.5)^n)}$$
+
+\end{solution}
+
+\end{problem}
+
+
+\paragraph{Academic integrity declaration.}
+The homework papers must include at the end an academic integrity declaration.
+In this statement 
+each group member must summarize briefly, in their own words, their contributions to the homework.
+Each group member must also state that he/she verified and has full understanding of all solutions in the submission.
+In addition, you need to state all external help and resources you used.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip 0.1in
+\paragraph{Submission.}
+To submit the homework, you need to upload the pdf file to Gradescope.
+If you submit for a group, you need
+to put all member names on the assignment and submit it as a group assignment.
+\paragraph{Reminders.}
+Remember that only {\LaTeX} papers are accepted. 
+
+\paragraph{Assignment 1 Declaration:}
+In this assignment, I used a small bunch of resources to help me write and answer these questions including:
+\begin{itemize}
+      \item Asymptotic notation notes and slides from Canvas
+      \item Quiz 1 samples
+      \item Google Gemini AI to help me with how to format my LaTex document neatly
+\end{itemize}
+
+\end{document}

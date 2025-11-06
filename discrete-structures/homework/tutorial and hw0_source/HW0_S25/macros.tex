@@ -1,0 +1,68 @@
+           
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%  LETTERS SITH ACCENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\barx}{{\bar x}}
+\newcommand{\bary}{{\bar y}}
+\newcommand{\barz}{{\bar z}}
+\newcommand{\bart}{{\bar t}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                                                                
+\newcommand{\parend}[1]{{\left( #1  \right) }}
+\newcommand{\spparend}[1]{{\left(\, #1  \,\right) }}
+\newcommand{\angled}[1]{{\left\langle #1  \right\rangle }}
+\newcommand{\brackd}[1]{{\left[ #1  \right] }}
+\newcommand{\spbrackd}[1]{{\left[\, #1  \,\right] }}
+\newcommand{\braced}[1]{{\left\{ #1  \right\} }}
+\newcommand{\leftbraced}[1]{{\left\{ #1  \right. }}
+\newcommand{\floor}[1]{{\left\lfloor #1\right\rfloor}}
+\newcommand{\ceiling}[1]{{\left\lceil #1\right\rceil}}
+\newcommand{\barred}[1]{{\left|#1\right|}}
+\newcommand{\doublebarred}[1]{{\left|\left|#1\right|\right|}}
+\newcommand{\spaced}[1]{{\, #1\, }}
+\newcommand{\suchthat}{{\spaced{|}}}
+\newcommand{\numof}{{\sharp}}
+\newcommand{\assign}{{\,\leftarrow\,}}
+\newcommand{\blanksymbol}{{\sqcup}}
+\newcommand{\razy}{{\vspace{-0.5pt}\cdot\vspace{-0.5pt}}}
+                                                                                                                         
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%% common fractions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                           
+\newcommand{\half}{\mbox{$\frac{1}{2}$}} 
+\newcommand{\onethird}{\mbox{$\frac{1}{3}$}} 
+\newcommand{\onefourth}{\mbox{$\frac{1}{4}$}}  
+\newcommand{\threehalfs}{\mbox{$\frac{3}{2}$}}  
+\newcommand{\threehalves}{\mbox{$\frac{3}{2}$}}    
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%% for homeworks
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\student}[2]{%
+{\noindent\Large{ \emph{#1} SID {#2} } \hfill} \vskip 0.1in}
+
+\newcommand{\assignment}[1]{\medskip\centerline{\large\bf CS 111 ASSIGNMENT {#1}}}
+
+\newcommand{\duedate}[1]{{\centerline{due {#1}\medskip}}}     
+
+\newcounter{problemnumber}                                                                                 
+
+\newenvironment{problem}{{\vskip 0.1in \noindent
+              \bf Problem~\addtocounter{problemnumber}{1}\arabic{problemnumber}:}}{}
+
+\newcounter{solutionnumber}
+
+\newenvironment{solution}{{\vskip 0.1in \noindent
+             \bf Solution~\addtocounter{solutionnumber}{1}\arabic{solutionnumber}:}}
+				{\ \newline\smallskip\lineacross\smallskip}
+
+\newcommand{\lineacross}{\noindent\mbox{}\hrulefill\mbox{}}
+
+
